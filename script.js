@@ -62,7 +62,7 @@ const Game = (() => {
     let players = []; // Array to hold player objects
     let currentPlayer; // Index of the current player in the players array
     let gameOver; // Flag to indicate if the game is over
-    
+
     // Function to start the game
     const start = () => {
         // Create player objects based on user input
@@ -75,11 +75,23 @@ const Game = (() => {
         gameOver = false; // Set game over flag to false
         GameBoard.render(); // Render the game board 
         
+        
         // Add event listener to each square for handling clicks
         const square = document.querySelectorAll(".square");
         square.forEach((square) => {
             square.addEventListener("click", handleClick);
         })
+        
+        
+    }
+
+    function countPlayer() {
+        let player1Score = 0;
+        let player2Score = 0;
+    
+        document.querySelector('#count-player1').innerHTML = player1Score;
+        document.querySelector('#count-player2').innerHTML = player2Score;
+    
     }
 
     // Function to handle click events on the game board
@@ -97,11 +109,41 @@ const Game = (() => {
         // Check for win or tie
         if (checkForWin(GameBoard.getGameborad(), players[currentPlayer].mark)) {
             gameOver = true;
+               // Incrementa el puntaje del jugador correspondiente
+               if (currentPlayer === 0) {
+                increasePlayer1Score();
+            } else {
+                increasePlayer2Score();
+            }
+            // Muestra el mensaje de victoria
             disPlayController.renderMessage(`${players[currentPlayer].name} wins`);
         } else if (checkForTie(GameBoard.getGameborad())) {
             gameOver = true;
+            // Incrementa el contador de empates y actualiza la pantalla
+          increaseTieCount();
             disPlayController.renderMessage("It's a Tie");
         }
+
+    // Function to increment player 1 score
+    function increasePlayer1Score() {
+        let player1ScoreElement = document.querySelector('#count-player1');
+        let currentScore = parseInt(player1ScoreElement.innerHTML);
+        player1ScoreElement.innerHTML = currentScore + 1;
+    }
+ 
+    function increasePlayer2Score() {
+        let player2ScoreElement = document.querySelector('#count-player2');
+        let currentScore = parseInt(player2ScoreElement.innerHTML);
+        player2ScoreElement.innerHTML = currentScore + 1;
+    }
+
+
+    function increaseTieCount() {
+        let tieCountElement = document.querySelector('#count-ties');
+        let currentTieCount = parseInt(tieCountElement.innerHTML);
+        tieCountElement.innerHTML = currentTieCount + 1;
+    }
+    
 
         currentPlayer = currentPlayer === 0 ? 1 : 0;
     }
@@ -113,7 +155,7 @@ const Game = (() => {
         }
         GameBoard.render();
         gameOver = false;
-        document.querySelector('#message').innerHTML = '  ';
+        document.querySelector('#message').innerHTML = ' ';
     }
 
     return {
@@ -150,6 +192,8 @@ function checkForTie(board) {
     return board.every(cell => cell !== "")
 }
 
+
+
 // Event listener for the restart button
 const restarButton = document.querySelector('#restart-button');
 restarButton.addEventListener("click", () => {
@@ -160,4 +204,17 @@ restarButton.addEventListener("click", () => {
 const startButton = document.querySelector("#start-button");
 startButton.addEventListener("click", () => {
     Game.start(); // Start the game when the button is clicked
+     showplayer();
+     countPlayer() 
 });
+
+function showplayer() {
+    // Obtener el valor del campo de entrada player1
+    var player1Value = document.querySelector("#player1").value;
+    var player2Value = document.querySelector("#player2").value;
+
+    // Establecer el valor obtenido como el contenido del elemento main_display-player1
+    document.querySelector('#main_display-player1').innerHTML = player1Value;
+    document.querySelector('#main_display-player2').innerHTML = player2Value;
+}
+
