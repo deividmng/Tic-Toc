@@ -311,25 +311,35 @@ template {
 }
 
 .square {
-  display: flex;
-  flex-wrap: wrap;
-  float: left;
+  display: grid;
   border: 1px solid black;
-  display: flex;
   justify-content: center;
   align-items: center;
-  width: 25%;
-  height: 30%;
-  text-align: center;
-  font-size: 80px;
-  gap: 2px;
+  width: 103px;
+  min-height: 101px;
+  margin: auto; /* Agregado para centrar horizontalmente */
 }
 
 #gameboard {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   justify-content: center;
   align-items: center;
   height: 300px;
-  justify-content: center;
+  gap: 10px;
+}
+
+.center {
+  max-width: 400px;
+  position: fixed;
+  top: 50%; /* Coloca el elemento en el 50% del borde superior */
+  left: 50%; /* Coloca el elemento en el 50% del borde izquierdo */
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+body {
+  background-color: #dbd8e3;
 }/*# sourceMappingURL=app.css.map */
