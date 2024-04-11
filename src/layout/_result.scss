@@ -1,0 +1,50 @@
+.result {
+    background-color: rgb(222, 204, 204);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 0.1fr; /* Hacer que los elementos se distribuyan en tres columnas */
+    gap: 5px; /* Espacio entre los elementos */
+    /* Añadir espacio alrededor del contenido */
+    visibility: hidden;
+    opacity: 0; /* Inicialmente establecer la opacidad en 0 para que esté completamente oculto */
+    transition: opacity 1s ease; /* Agregar una transición de opacidad para que aparezca gradualmente */
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    z-index: 1;
+
+    &.visible {
+        visibility: visible;
+        opacity: 1; /* Cambiar la opacidad a 1 cuando el elemento se hace visible */
+    }
+
+  }
+
+  #restart-button {
+    align-items: center;
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+
+    height: 10%;
+    align-items: left;
+    z-index: 222;
+    
+    img {
+        width: 20px; /* Ajusta el ancho de la imagen según sea necesario */
+        height: 20px; /* Ajusta la altura de la imagen según sea necesario */
+    }
+    
+} 
+
+.main_sumary {
+    text-align: center; /* Centrar el contenido dentro de cada sección */
+}
+
+.main_display-name {
+    font-weight: bold; /* Hacer el nombre de los jugadores en negrita */
+}
+
+.main_score-displayer {
+    margin-top: 0; /* Eliminar el espacio superior de los marcadores */
+
+
+}

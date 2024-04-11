@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -340,6 +341,121 @@ template {
   border-radius: 10px;
 }
 
+header {
+  text-align: center;
+}
+header h1 {
+  font-size: 22px;
+  background-image: url(../../assets/pexels-steve-johnson-1266808.jpg);
+  background-position: center;
+  color: transparent;
+  -webkit-background-clip: text;
+          background-clip: text;
+}
+
 body {
   background-color: #dbd8e3;
+}
+
+.result {
+  background-color: rgb(222, 204, 204);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 0.1fr; /* Hacer que los elementos se distribuyan en tres columnas */
+  gap: 5px; /* Espacio entre los elementos */
+  /* Añadir espacio alrededor del contenido */
+  visibility: hidden;
+  opacity: 0; /* Inicialmente establecer la opacidad en 0 para que esté completamente oculto */
+  transition: opacity 1s ease; /* Agregar una transición de opacidad para que aparezca gradualmente */
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  z-index: 1;
+}
+.result.visible {
+  visibility: visible;
+  opacity: 1; /* Cambiar la opacidad a 1 cuando el elemento se hace visible */
+}
+
+#restart-button {
+  align-items: center;
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  height: 10%;
+  align-items: left;
+  z-index: 222;
+}
+#restart-button img {
+  width: 20px; /* Ajusta el ancho de la imagen según sea necesario */
+  height: 20px; /* Ajusta la altura de la imagen según sea necesario */
+}
+
+.main_sumary {
+  text-align: center; /* Centrar el contenido dentro de cada sección */
+}
+
+.main_display-name {
+  font-weight: bold; /* Hacer el nombre de los jugadores en negrita */
+}
+
+.main_score-displayer {
+  margin-top: 0; /* Eliminar el espacio superior de los marcadores */
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  visibility: visible;
+}
+.controls input[type=text] {
+  padding: 10px;
+  margin: 0 5px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.controls input[type=text]:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.controls input[type=text]::-moz-placeholder {
+  color: #aaa;
+}
+.controls input[type=text]::placeholder {
+  color: #aaa;
+}
+.controls input[type=text]:hover {
+  border-color: #999;
+}
+
+input[type=text], button {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+input[type=text] {
+  width: 200px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: #0056b3;
+}
+
+#message {
+  display: flex; /* Usar flexbox */
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+  padding: 10px;
+  font-size: 30px;
+  margin-top: 10px;
 }/*# sourceMappingURL=app.css.map */
