@@ -1,14 +1,25 @@
 // GameBoard module to handle rendering the game board
 const disPlayController = (() => {
-    // Function to render a message on the screen
+    // Function to render a message on the screen and hide it after 2 seconds
     const renderMessage = (message) => {
-        document.querySelector('#message').innerHTML = message;
+        const messageElement = document.querySelector('#message');
+        messageElement.innerHTML = message;
+        // Ocultar el mensaje después de 2 segundos
+        setTimeout(() => {
+            messageElement.innerHTML = '';
+            // Llamar a la función restart después de 2 segundos
+            Game.restart();
+        }, 2000);
     }
 
     return {
-        renderMessage // Expose the renderMessage function
+        renderMessage // Exponer la función renderMessage
     }
 })();
+
+
+
+
 
 // GameBoard module to handle rendering and updating the game board
 const GameBoard = (() => {
@@ -85,14 +96,6 @@ const Game = (() => {
         
     }
 
-    function countPlayer() {
-        let player1Score = 0;
-        let player2Score = 0;
-    
-        document.querySelector('#count-player1').innerHTML = player1Score;
-        document.querySelector('#count-player2').innerHTML = player2Score;
-    
-    }
 
     // Function to handle click events on the game board
     const handleClick = (event) => {
@@ -201,12 +204,36 @@ restarButton.addEventListener("click", () => {
 })
 
 // Event listener for the start button
+
 const startButton = document.querySelector("#start-button");
+
 startButton.addEventListener("click", () => {
-    Game.start(); // Start the game when the button is clicked
-     showplayer();
-     countPlayer() 
+    Game.start(); // Comenzar el juego cuando se hace clic en el botón
+    showplayer();
+    countPlayer(); 
+    disPlayController.renderMessage(''); // Borrar el mensaje cuando se inicia un nuevo juego
+
+   
+}); 
+
+
+
+
+// show the counter 
+
+startButton.addEventListener("click", () => {
+    const result = document.querySelector('.result');
+    result.classList.add('visible'); // Agrega la clase visible para mostrar el elemento gradualmente
 });
+
+
+
+startButton.addEventListener("click", () => {
+    const controler = document.querySelector('.controls');
+    controler.style.visibility = 'hidden';
+         
+});
+
 
 function showplayer() {
     // Obtener el valor del campo de entrada player1

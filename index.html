@@ -1,45 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/app.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/app.css" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
+    <header>
+        <h1>tic-toc</h1>
+    </header>
 
-    <h1>tic-toc</h1>
 
     <div class="center">
-        <div id="gameboard">        
-        </div>
+      <div id="gameboard"></div>
     </div>
+
+    <div id="controls" class="controls" ">
+      <section >
+        <input type="text" id="player1" placeholder="player 1 " />
+        <input type="text" id="player2" placeholder="player 2 " />
+      </section>
+      <section >
+        <button id="start-button">Start Game</button>
+      
+      </section>
+    </div>
+
     
-    <div id="controls">
-    <input type="text" id="player1" placeholder="player 1 ">
-    <input type="text" id="player2" placeholder="player 2 ">
-    </div>
-    <button id="start-button">Start Game </button>
-    <button id="restart-button">Restar Game</button>
     <div id="message"></div>
     <div id="result-display"></div>
 
-<div class="result" >
-    <section class="main_sumary" >
-        <p id="main_display-player1"> player 1</p>
+    <div class="result">
+      <section class="main_sumary">
+        <p id="main_display-player1">player 1</p>
         <h2 id="count-player1" class="main_score-displayer">0</h2>
-    </section>
-    <section class="main_sumary" >
+      </section>
+      <section class="main_sumary">
         <p class="main_display-name">Ties</p>
         <h2 id="count-ties" class="main_score-displayer">0</h2>
-    </section>
-    <section class="main_sumary" >
-        <p id="main_display-player2"> player 2</p>
-        <h2  id="count-player2" class="main_score-displayer">0</h2>
-    </section>
-
-</div>
-
-</body>
-<script src="script.js"></script>
+      </section>
+      <section class="main_sumary">
+        <p id="main_display-player2">player 2</p>
+        <h2 id="count-player2" class="main_score-displayer">0</h2>
+      </section>
+      <section>
+        <button id="restart-button" >
+            <img src="/assets/restart-circle-svgrepo-com.svg" alt="Restart">
+          </button>
+      </section>
+    
+    </div>
+  </body>
+  <script src="script.js"></script>
 </html>
